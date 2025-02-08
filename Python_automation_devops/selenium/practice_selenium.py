@@ -111,7 +111,7 @@ Keyboard Actions
     actions = ActionChains(driver)
     1.action.key_down(keys.CONTROL).send_keys('A').Key_up(key.CONTROL).perform()
     2.element.send_keys(key.ENTER)
-
+ 
 Mouse Actions
 
     element=driver.find_element(By.ID,'')
