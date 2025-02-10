@@ -45,4 +45,40 @@ def find_domain(n):
     m=re.search(pattern,n)
     print(m.group(1))
 
+def high_marks_in_dict():
+    names = ['prem', 'kumar', 'john']
+    marks = [11, 22, 33]
+    name_marks=dict(zip(names,marks))
+    print(name_marks)
+
+class Parent(object):
+    x = 1
+class Child1(Parent):
+    pass
+class Child2(Parent):
+    pass
+print( Parent.x, Child1.x, Child2.x)
+Child1.x = 2
+print (Parent.x, Child1.x, Child2.x)
+Parent.x = 3
+print(Parent.x, Child1.x, Child2.x)
+
+def get_char_only(n):
+    import re
+    pattern=r'[^a-zA-Z]'
+    a=re.sub(pattern,"",n)
+    print(a)
+
+def get_number_only(n):
+    import re
+    pattern=r'\d'
+    a=re.findall(pattern,n)
+    print(a)
+
+def reverse_number(n):
+    a=str(n)
+    print(a[::-1])
+
+
+
 

@@ -136,4 +136,4 @@ from python_scripts import python_interview_programs
 def test_execute_python_script():
     d=python_interview_programs
     print('\n')
-    d.find_domain('bala@gmail.com')
+    d.reverse_number(1234)
