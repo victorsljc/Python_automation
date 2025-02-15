@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Python_EBook_Free-main/.idea/Python_EBook_Free-main.iml" filepath="$PROJECT_DIR$/Python_EBook_Free-main/.idea/Python_EBook_Free-main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Python_automation_devops.iml" filepath="$PROJECT_DIR$/.idea/Python_automation_devops.iml" />
     </modules>
   </component>

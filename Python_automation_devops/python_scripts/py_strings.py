@@ -1,42 +1,54 @@
+# converts string to upper case
 def test_upper_case():
     a='rabit'
     print('\n',a.upper())
 
+#converts string to lower case
 def test_lower():
     a='RAJU'
     print('\n',a.lower())
 
+# converts string like first letter is capital in string
 def test_capitalize():
     a='hello world'
     print(a.capitalize())
 
+# each word of first letter is capital
 def test_title():
     a='hello world'
     print(a.title())
 
+# removes white spaces
 def test_strip():
     a='  hello world'
     print(a.strip())
 
+# removes whitespace from left side of string
 def test_lstrip():
     a='  hello world'
     print(a.lstrip())
 
+# removes whitespaces from right side of string
 def test_rstrip():
     a='  hello world  '
     print(a.rstrip())
 
+# replaces string/literal with new string/literal
 def test_replace():
     a='raju'
     print(a.replace('r','g'))
 
+# splits a string based on separator
 def test_split():
     a='raju rani bava'
-    print(a.split(' ')) # return type is list
+    b='rani,raju,rah'
+    c='rani.raju.rah'
+    print(b.split(',')) # return type is list
 
+#joins the string based on separator
 def test_join():
     a='raju'
-    print('-'.join(a))
+    print('-'.join(a)) # output - r-a-j-u
 
 def test_find():
     a='raju'
@@ -86,6 +98,7 @@ def test_format():
     # print(f"I am {name} and I have {age}")
     print(f'the sum of {a} and {b} is {a+b}')
 
+# it fills with 0s before the string
 def test_zfill():
     a='10'
     print(a.zfill(3)) # return type is string
@@ -94,6 +107,7 @@ def  test_encode():
     a='raju'
     print(a.encode('utf-8'))
 
+# swaps the case to opposite case liek upper -> lower, lower-> upper
 def test_swapcode():
     a='HelloWorld'
     print(a.swapcase())
