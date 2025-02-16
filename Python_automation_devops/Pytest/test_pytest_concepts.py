@@ -1,46 +1,49 @@
-# pytest concepts
-#     1. fixtures
-#             @pytest.fixture
-#     2.parametrization
-#             @pytest.mark.parametrize('a,b,c',[(1,2,3),(2,3,5)])
-#     3.assertions
-#             assert condition, failed_message
-#     4.testcase writing
-#             create a file using test or test_ on start of the name
+"""
+pytest concepts
+    1. fixtures
+            @pytest.fixture
+    2.parametrization
+            @pytest.mark.parametrize('a,b,c',[(1,2,3),(2,3,5)])
+    3.assertions
+            assert condition, failed_message
+    4.testcase writing
+            create a file using test or test_ on start of the name
 
-#     5.markers
-            # Builtin markers
-            # parametrize: Perform multiple calls to the same test function16.
-            # skip: Always skip a test function23.
-            # skipif: Skip a test function if a certain condition is met23.
-            # xfail: Expect a test to fail1.
-            # usefixtures: Use fixtures on a test function or class2.
-            # filterwarnings: Filter certain warnings of a test function2.
-            # Custom markers
-            # # pytest.ini
-            # [pytest]
-            # markers =
-            #     slow: marks tests as slow (deselect with '-m "not slow"')
-            # #
-            # Apply markers to whole class
-            #     import pytest
-            #
-            #     @pytest.mark.webtest
-            #     class TestClass:
-            #         def test_startup(self):
-            #             pass
-            #
-            #         def test_startup_and_more(self):
-            # #             pass
-            # Apply marker at module level
-            # import pytest
-            # pytestmark = pytest.mark.webtest
-#     6. testcase execution modes
-#         Pytest provides flexible test selection options:
-#         Run tests by module: pytest test_mod.py
-#         Run tests by directory: pytest testing/
-#         Run tests by keyword: pytest -k "MyClass and not method"
-#         Run tests by markers: pytest -m slow
+    5.markers
+            Builtin markers
+            parametrize: Perform multiple calls to the same test function16.
+            skip: Always skip a test function23.
+            skipif: Skip a test function if a certain condition is met23.
+            xfail: Expect a test to fail1.
+            usefixtures: Use fixtures on a test function or class2.
+            filterwarnings: Filter certain warnings of a test function2.
+            Custom markers
+            # pytest.ini
+            [pytest]
+            markers =
+                slow: marks tests as slow (deselect with '-m "not slow"')
+
+            Apply markers to whole class
+                import pytest
+                @pytest.mark.webtest
+                class TestClass:
+                    def test_startup(self):
+                        pass
+
+                    def test_startup_and_more(self):
+                        pass
+            Apply marker at module level
+                import pytest
+                pytestmark = pytest.mark.webtest
+
+    6. testcase execution modes
+        Pytest provides flexible test selection options:
+        Run tests by module: pytest test_mod.py
+        Run tests by directory: pytest testing/
+        Run tests by keyword: pytest -k "MyClass and not method"
+        Run tests by markers: pytest -m slow
+
+"""
 import pytest
 from pycparser.plyparser import parameterized
 
@@ -72,36 +75,36 @@ def addition(request):
 
 def test_addition_params(addition):
     print(addition+2)
+"""
+@@@@@@@@@@@@@@@@@@@@@  markers @@@@@@@@@@@@@@@@@@@'
+    Builtin markers
+        parametrize: Perform multiple calls to the same test function16.
+        skip: Always skip a test function23.
+        skipif: Skip a test function if a certain condition is met23.
+        xfail: Expect a test to fail1.
+        usefixtures: Use fixtures on a test function or class2.
+        filterwarnings: Filter certain warnings of a test function2.
+    Custom markers
+        pytest.ini
+        [pytest]
+        markers =
+            slow: marks tests as slow (deselect with '-m "not slow"')
+        
+        Apply markers to whole class
+            import pytest
 
-# @@@@@@@@@@@@@@@@@@@@@  markers @@@@@@@@@@@@@@@@@@@'
-# Builtin markers
-# parametrize: Perform multiple calls to the same test function16.
-# skip: Always skip a test function23.
-# skipif: Skip a test function if a certain condition is met23.
-# xfail: Expect a test to fail1.
-# usefixtures: Use fixtures on a test function or class2.
-# filterwarnings: Filter certain warnings of a test function2.
-# Custom markers
-# # pytest.ini
-# [pytest]
-# markers =
-#     slow: marks tests as slow (deselect with '-m "not slow"')
-# #
-# Apply markers to whole class
-#     import pytest
-#
-#     @pytest.mark.webtest
-#     class TestClass:
-#         def test_startup(self):
-#             pass
-#
-#         def test_startup_and_more(self):
-# #             pass
-# Apply marker at module level
-# import pytest
-# pytestmark = pytest.mark.webtest
+    @pytest.mark.webtest
+    class TestClass:
+        def test_startup(self):
+            pass
 
+        def test_startup_and_more(self):
+            pass
+Apply marker at module level
+import pytest
+pytestmark = pytest.mark.webtest
 
+"""
 @pytest.mark.regression
 def test_reg1():
     print('this is regression 1')
