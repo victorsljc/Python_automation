@@ -7,7 +7,8 @@ from openpyxl import Workbook
 # Create a new workbook and select the active worksheet
 def test_create_and_save_workbook():
     wb = Workbook()
-    ws = wb.active
+    ws1 = wb.active
+    ws=wb.create_sheet('sample')
 
     # Write data to cells
     ws['A1'] = "Name"
