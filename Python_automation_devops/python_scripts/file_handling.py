@@ -109,3 +109,39 @@ def test_working_with_file_path():
     # Write to a file
     file_path.write_text("New content")
 
+# generic usage like creating directory and file with manipulations
+def test_practice_method():
+    import os
+
+    directory = 'file'
+    file_path = os.path.join(directory, 'example.txt')
+
+    try:
+        # Create the directory if it doesn't exist
+        if not os.path.exists(directory):
+            os.mkdir(directory)
+            print(f"Directory '{directory}' created.")
+
+        # Create and write to the file
+        with open(file_path, 'w') as file:
+            file.write('This is a newly created file.')
+            print(f"File '{file_path}' created and written to.")
+
+        # Read the file content
+        with open(file_path, 'r') as file:
+            content = file.read()
+            print("File content:", content)
+
+    except FileExistsError:
+        print(f"File '{file_path}' already exists.")
+    except OSError as e:
+        print(f"An error occurred: {e}")
+    finally:
+        # Clean up: Remove the file and directory
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print(f"File '{file_path}' removed.")
+
+        if os.path.exists(directory):
+            os.rmdir(directory)
+            print(f"Directory '{directory}' removed.")
