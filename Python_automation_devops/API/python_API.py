@@ -183,3 +183,144 @@ def test_mock_get_post():
     # Assertions
     assert response.status_code == 200
     assert response.json() == mock_response
+
+from http.client import responses
+
+from packaging.version import VERSION_PATTERN
+
+"""
+Query parameters are appended to the end of the request URL, following ? and listed in key-value pairs, separated by & as follows: ?id=1&type=new
+Path parameters form part of the request URL, and are referenced using placeholders preceded by : as in the following example: /customer/:id
+
+"""
+
+
+import requests
+API_questions = 'https://katalon.com/resources-center/blog/web-api-testing-interview-questions'
+base_url='https://reqres.in/api'
+
+# ************************ GET Method **************************************
+
+def test_list_users():
+    path_argument='users?page=2' # two page are there currently
+    response=requests.get(f'{base_url}/{path_argument}')
+    code= response.status_code
+    print(code,'\n')
+    data=response.json()
+    print(data)
+
+def test_single_user():
+    path_argument = 'users/2'
+    response= requests.get(f'{base_url}/{path_argument}')
+    code= response.status_code
+    data=response.json()
+    print('done')
+
+def test_single_user_not_found():
+    url_path ='users/23'
+    response = requests.get(f'{base_url}/{url_path}')
+    code = response.status_code
+    data = response.json()
+    print('done')
+
+def test_list_resource():
+    url_path = '/unknown'
+    response = requests.get(f'{base_url}{url_path}')
+    code = response.status_code
+    text= response.text
+    data= response.json()
+    reason= response.reason
+    request = response.request
+    assert base_url+url_path == response.request.url,'this is not equal'
+    print(10)
+
+def test_single_resource():
+    url_path ='/unknown/23'
+    response= requests.get(f'{base_url}{url_path}')
+    code = response.status_code
+    text=response.text
+    data= response.json()
+    reason=response.reason
+    request=response.request
+    assert base_url+url_path == response.request.url, "this is not matched"
+    print(10)
+
+
+    # ************************** POST ********************************************
+
+def test_create_user():
+        url_path='/users'
+        user_payload={
+            'name':'balasljc',
+            'position':'software engineer'
+        }
+        response = requests.post(f'{base_url}{url_path}',json=user_payload)
+        code=response.status_code
+        data=response.json()
+        assert response.status_code == 201 ,' user is not created'
+        print('done')
+        # id is 995
+
+def test_update_user_with_put_patch():
+    url_path ='/users/2'
+    user={
+    "name": "morpheus",
+    "job": "zion resident"
+    }
+    # response = requests.put(f'{base_url}{url_path}',json=user)
+    response = requests.patch(f'{base_url}{url_path}',json=user)
+    code = response.status_code
+    data=response.json()
+    reason=response.reason
+    assert response.status_code == 200,'it is not success'
+    print('done')
+
+def test_delete_user():
+    url_path='/users/2'
+    response=requests.delete(f'{base_url}{url_path}')
+    code = response.status_code
+    assert response.status_code == 204, " this is not success"
+    print('not updated')
+
+def test_register_user_with_post():
+    url_path='/register'
+    register_payload={
+    "email": "eve.holt@reqres.in",
+    "password": "pistol"
+    }
+    response = requests.post(f'{base_url}{url_path}',json=register_payload)
+    code = response.status_code
+    data =response.json()
+    assert response.status_code == 200,'it is not success'
+    print('done')
+
+def test_register_incorrect_user_with_post(): # 400 status code - bad requesst
+    url_path ='/register'
+    payload={
+    "email": "sydney@fife"
+    }
+    response = requests.post(f'{base_url}{url_path}',json=payload)
+    code = response.status_code
+    data=response.json()
+    print('done')
+
+def test_login_user(): # 200 status code - success
+    url_path='/login'
+    payload = {
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+    }
+    response = requests.post(f'{base_url}{url_path}',json=payload)
+    code =response.status_code
+    data=response.json()
+    print('done')
+
+def test_invalid_user_login(): # 400 bad request
+    url_path ='/login'
+    payload={
+    "email": "peter@klaven"
+    }
+    response= requests.post(f'{base_url}{url_path}',json=payload)
+    code = response.status_code
+    reason=response.reason
+    print('done')
