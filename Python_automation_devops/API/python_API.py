@@ -109,3 +109,77 @@ key concepts related to APIs
             Versioning can be done through the URL, headers, or other means.
 
 '''
+
+import requests
+
+# Base URL of the API
+BASE_URL = "https://jsonplaceholder.typicode.com"
+
+
+def test_get_post():
+    # Endpoint to test
+    endpoint = f"{BASE_URL}/posts/1"
+
+    # Send GET request
+    response = requests.get(endpoint)
+
+    # Assert status code
+    assert response.status_code == 200, f"Expected status code 200, but got {response.status_code}"
+
+    # Assert response body
+    data = response.json()
+    assert data["id"] == 1, f"Expected post ID 1, but got {data['id']}"
+    assert data["userId"] == 1, f"Expected user ID 1, but got {data['userId']}"
+    assert "title" in data, "Title not found in response"
+    assert "body" in data, "Body not found in response"
+
+
+def test_create_post():
+    endpoint = f"{BASE_URL}/posts"
+
+    # Payload for the POST request
+    payload = {
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    }
+
+    # Send POST request
+    response = requests.post(endpoint, json=payload)
+
+    # Assert status code
+    assert response.status_code == 201, f"Expected status code 201, but got {response.status_code}"
+
+    # Assert response body
+    data = response.json()
+    assert data["id"] is not None, "Post ID not found in response"
+    assert data["title"] == "foo", f"Expected title 'foo', but got {data['title']}"
+    assert data["body"] == "bar", f"Expected body 'bar', but got {data['body']}"
+
+# mocking responses
+import responses
+import requests
+
+
+@responses.activate
+def test_mock_get_post():
+    # Mock the API response
+    mock_response = {
+        "id": 1,
+        "userId": 1,
+        "title": "Mocked Title",
+        "body": "Mocked Body"
+    }
+    responses.add(
+        responses.GET,
+        "https://jsonplaceholder.typicode.com/posts/1",
+        json=mock_response,
+        status=200
+    )
+
+    # Send GET request
+    response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+
+    # Assertions
+    assert response.status_code == 200
+    assert response.json() == mock_response
