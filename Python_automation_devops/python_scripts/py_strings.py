@@ -141,3 +141,24 @@ def test_digit_in_str():
             pass
         else:
             print(x)
+
+def test_reverse_string():
+    a = 'string'
+    b = ''
+    for x in range(len(a) - 1, -1, -1):
+        b = b + a[x]
+    print(b)
+
+def test_increasing_order_string():
+    # a = [1,23,43,5,34,23]
+    a = 'prem kumar'
+    b = list(a)
+    n = len(b)
+    for i in range(n):
+        for j in range(n):
+            if b[j] < b[i]:
+                b[j], b[i] = b[i], b[j]
+    print(b)
+    result = ''.join(b)
+    print(result)
+

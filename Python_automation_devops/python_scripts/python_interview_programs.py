@@ -39,6 +39,7 @@ def sorting_list(n):
                 n[x],n[y]=n[y],n[x]
     print(n)
 
+
 def find_domain(n):
     import re
     pattern=r'@(\w+)\.'
@@ -78,6 +79,7 @@ def get_number_only(n):
 def reverse_number(n):
     a=str(n)
     print(a[::-1])
+
 
 
 

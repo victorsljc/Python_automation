@@ -1,23 +1,20 @@
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.devtools.v130.page import Screenshot
-from selenium.webdriver.common.devtools.v85.runtime import ExecutionContextId
 '''
 source link :- https://selectorshub.com/xpath-practice-page/
     Xpaths
         1. //*[@text='New User ? Register here/Activate']:
             This selects any element (*) that has an attribute named "text" whose value is exactly equal to "New User ? Register here/Activate".
             This is appropriate if the string you provided is the value of an attribute called text
-        
+
         2. //*[text()='New User ? Register here/Activate']:
             This selects any element (*) whose text content (the text displayed inside the element) is exactly equal to "New User ? Register here/Activate".
             The text() function extracts the text content of the element.
             This is appropriate if the string is the text that is displayed directly within the element, not the value of an attribute.
-        
+
         3. //*[contains(text(),'New User ? Register here/Activate')]
             source link - https://retail.onlinesbi.sbi/retail/login.htm
-        
+
         4. //*[contains(@href, 'step')]
-        
+
         5. //*[contains(@text, 'New User ? Register here/Activate')]
         6. //div[@id='content']/child::p
         7. //div[@id='main-section']/following::div
@@ -132,8 +129,3 @@ Dropdown
     dropdown.select_by_index()
 
 '''
-from python_scripts import python_interview_programs
-def test_execute_python_script():
-    d=python_interview_programs
-    print('\n')
-    d.reverse_number(1234)
