@@ -46,3 +46,60 @@ def test_insertion_sort():
         arr[j + 1] = key
     print("Sorted array:", arr)
 
+
+def quick_sort(arr):
+    # Base case: if the array has 0 or 1 element, it's already sorted
+    if len(arr) <= 1:
+        return arr
+
+    # Choose a pivot element (here we choose the last element)
+    pivot = arr[-1]
+
+    # Partition the array into two sub-arrays
+    left = [x for x in arr[:-1] if x <= pivot]  # Elements less than or equal to pivot
+    right = [x for x in arr[:-1] if x > pivot]  # Elements greater than pivot
+
+    # Recursively apply quick_sort to the sub-arrays and combine the results
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+def test_merge_sort():
+    def merge_sort(arr):
+        if len(arr) > 1:
+            # Find the middle point and divide the array into two halves
+            mid = len(arr) // 2
+            left_half = arr[:mid]
+            right_half = arr[mid:]
+
+            # Recursively sort both halves
+            merge_sort(left_half)
+            merge_sort(right_half)
+
+            # Merge the sorted halves
+            i = j = k = 0
+
+            # Copy data to temp arrays left_half[] and right_half[]
+            while i < len(left_half) and j < len(right_half):
+                if left_half[i] < right_half[j]:
+                    arr[k] = left_half[i]
+                    i += 1
+                else:
+                    arr[k] = right_half[j]
+                    j += 1
+                k += 1
+
+            # Check if any element was left in left_half
+            while i < len(left_half):
+                arr[k] = left_half[i]
+                i += 1
+                k += 1
+
+            # Check if any element was left in right_half
+            while j < len(right_half):
+                arr[k] = right_half[j]
+                j += 1
+                k += 1
+
+    # Example usage
+    arr = [38, 27, 43, 3, 9, 82, 10]
+    merge_sort(arr)
+    print("Sorted array is:", arr)
