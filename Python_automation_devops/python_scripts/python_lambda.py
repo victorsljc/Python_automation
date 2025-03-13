@@ -87,4 +87,10 @@ def test_as_list_of_functions():
     print(operations[1](5, 3))  # Output: 2 (subtraction)
     print(operations[2](5, 3))  # Output: 15 (multiplication)
 
+def test_lambda_with_reduce():
+    import functools
+    a=[1,2,3,4,5]
+    b=functools.reduce(lambda a,b:a+b,a)
+    print(b)
+
 

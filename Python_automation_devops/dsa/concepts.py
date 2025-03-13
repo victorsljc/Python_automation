@@ -18,7 +18,7 @@ Data structures are ways to organize and store data to enable efficient access a
   - Circular Linked List
 - **Stacks**:
   - LIFO (Last In, First Out) principle.
-  - Operations: Push, pop, peek.
+  - Operations: Push, pop, peek or top , isempty.
 - **Queues**:
   - FIFO (First In, First Out) principle.
   - Types: Simple queue, circular queue, priority queue, deque (double-ended queue).
@@ -208,5 +208,17 @@ Algorithms are step-by-step procedures for solving problems.
 ---
 
 By mastering these DSA concepts and practicing regularly, you'll be well-prepared for coding interviews, competitive programming, and real-world software development.
+
+"""
+
+#.............................. PYHTON DATA STRUCTURE .....................................
+"""
+Builtin data structure
+    List, Tuple, Set, Dictionary
+
+User Defined
+    Stack, Queue, Linked List, Tree, Graph 
+    
+    Stack
 
 """
